@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Panosen.Resource.Npm</AssemblyName>
+    <RootNamespace>Panosen.Resource.Npm</RootNamespace>
+    <Version>0.1.0</Version>
+    <Authors>harriszhang@live.cn</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DocumentationFile>bin\$(Configuration)\Panosen.Resource.Npm.xml</DocumentationFile>
+    <PackageIcon>panosen.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/panosen/panosen-resource-npm</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\panosen.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Panosen.Resource" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="NpmResourceKeys.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NpmResourceKeys.cs</LastGenOutput>
+    </None>
+    <None Update="NpmResourcePaths.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NpmResourcePaths.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="NpmResourceKeys.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NpmResourceKeys.tt</DependentUpon>
+    </Compile>
+    <Compile Update="NpmResourcePaths.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NpmResourcePaths.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
